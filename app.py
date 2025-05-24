@@ -61,20 +61,20 @@ def start_sniffer_route():
     if not sniffer_thread or not sniffer_thread.is_alive():
         sniffer_thread = threading.Thread(target=start_sniffer, daemon=True)
         sniffer_thread.start()
-        flash("✅ Live sniffer started.")
+        flash(" Live sniffer started.")
     else:
-        flash("ℹ️ Sniffer already running.")
+        flash(" Sniffer already running.")
     return redirect(url_for("index"))
 
 @app.route("/stop-sniffer")
 def stop_sniffer_route():
     stop_sniffer()
-    flash("🛑 Live sniffer stopped.")
+    flash(" Live sniffer stopped.")
     return redirect(url_for("index"))
 
 @app.route("/fake-upload", methods=["POST"])
 def fake_upload():
-    print(f"[📥 RECEIVED] {len(request.data)} bytes of simulated exfiltration.")
+    print(f"[ RECEIVED] {len(request.data)} bytes of simulated exfiltration.")
     return "Received", 200
 
 @app.route("/download")
